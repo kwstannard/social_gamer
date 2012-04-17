@@ -4,18 +4,34 @@ class Instance
     def self.mtm_relations; return @@mtm_relations; end
 
     args.each do |mtm_relation|
-      class_eval <<-MTM_METHODS
-
-        def #{mtm_relation};    @#{mtm_relation} ||= [];    end
-
-        def add_to_#{mtm_relation} (relation)
-          #{mtm_relation}.push(relation)
-        end
-
-        def remove_from_#{mtm_relation} (relation)
-          #{mtm_relation}.delete(relation)
-        end
-      MTM_METHODS
+      make_getter_method(mtm_relation)
+      make_create_relation_method(mtm_relation)
+      make_remove_relation_method(mtm_relation)
     end
   end
+
+  private
+
+  def self.make_getter_method(relation)
+    class_eval <<-METHOD
+      def #{relation};    @#{relation} ||= [];    end
+    METHOD
+  end
+  
+  def self.make_create_relation_method(relation)
+    class_eval <<-METHOD
+      def add_to_#{relation} (rel)
+        #{relation}.push(rel)
+      end
+    METHOD
+  end
+
+  def self.make_remove_relation_method(relation)
+    class_eval <<-METHOD
+      def remove_from_#{relation} (rel)
+        #{relation}.delete(rel)
+      end
+    METHOD
+  end
+
 end

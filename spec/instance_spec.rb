@@ -3,7 +3,7 @@ require_relative '../spec_helper.rb'
 describe Instance do
   describe "#mtm_relations" do
     context "is passed :derp" do
-      class Herp < Instance; mtm_relations :derp; end
+      class Herp < Instance; set_mtm_relations :derp; end
       let(:obj) { double }
       let(:herp) { Herp.new }
 
