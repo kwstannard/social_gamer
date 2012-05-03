@@ -1,4 +1,4 @@
-require '~/social_gamer/spec_helper.rb'
+load '~/social_gamer/spec_helper.rb'
 
 describe Address do
 

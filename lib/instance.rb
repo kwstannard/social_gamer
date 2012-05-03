@@ -1,7 +1,7 @@
 class Instance
   def self.set_mtm_relations(*args)
-    @@mtm_relations = args
-    def self.mtm_relations; return @@mtm_relations; end
+    @mtm_relations = args
+    def self.mtm_relations; return @mtm_relations; end
 
     args.each do |mtm_relation|
       make_getter_method(mtm_relation)

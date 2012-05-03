@@ -1,4 +1,4 @@
-require '~/social_gamer/spec_helper.rb'
+load '~/social_gamer/spec_helper.rb'
 
 describe Game do
   it_has_the_mtm_relations(:players, :events)
