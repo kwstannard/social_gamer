@@ -1,4 +1,4 @@
-require_relative '../instance.rb'
+require '~/social_gamer/lib/instance.rb'
 
 class Person < Instance
   attr_reader :name_first, :name_last, :name_middle,
@@ -7,5 +7,9 @@ class Person < Instance
 
   def move_to(new_place)
     @location = new_place
+  end
+
+  def to_s
+    "#{name_first} #{name_last}"
   end
 end

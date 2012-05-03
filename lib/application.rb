@@ -1,4 +1,17 @@
 class Application
+
+  def people
+    @people ||= []
+  end
+
+  def enroll_person(person)
+    people << person
+  end
+
+  def unenroll_person(person)
+    people.delete(person)
+  end
+
   def make_friendship(person1, person2)
     person1.add_to_friends(person2)
     person2.add_to_friends(person1)
