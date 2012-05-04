@@ -17,5 +17,5 @@ module InstanceSpecMethods
 end
 
 RSpec.configure do |c|
-  c.extend InstanceSpecMethods
+  c.extend InstanceSpecMethods, :type => :instance
 end
