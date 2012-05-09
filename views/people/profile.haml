@@ -1,0 +1,18 @@
+%ol
+  %li
+    = "First : #{person.name_first}"
+  %li
+    = "middle : #{person.name_middle}"
+  %li
+    = "last : #{person.name_last}"
+
+current friends
+%ol
+  -app.get_links(person).each do |f|
+    %li
+      =f.to_s
+
+make friends
+-app.people.each do |p|
+  %li
+    ="<a href=\"/\">#{p.to_s}<,/a>"

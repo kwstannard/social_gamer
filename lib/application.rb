@@ -15,7 +15,7 @@ module Linker
   end
 
   def get_links(instance)
-    @links[instance]
+    links[instance]
   end
 
 end
@@ -25,15 +25,19 @@ class Application
   include Linker
 
   def people
-    @people ||= []
+    @people ||= {}
+  end
+
+  def get_person(id)
+    people[id]
   end
 
   def enroll_person(person)
-    people << person
+    people[person.id] = person
   end
 
   def unenroll_person(person)
-    people.delete(person)
+    people.delete(person.id)
   end
 
 #  def enter_a_game(person, game)

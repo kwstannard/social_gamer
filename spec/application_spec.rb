@@ -3,17 +3,22 @@ require 'application'
 describe Application do
 
   let(:subject) { Application.new }
-  let(:person) { double("bob") }
-  let(:person2) { double("jim") }
+  let(:person) { double("bob", :id => double) }
+  let(:person2) { double("jim", :id => double) }
 
   it "can add and remove a person from the list of people" do
     subject.enroll_person(person)
-    subject.people.should eq [person]
+    subject.people.should == {person.id => person}
     subject.unenroll_person(person)
-    subject.people.should eq []
+    subject.people.should == {}
   end
 
-  describe '#create_linke' do
+  it "can get a person from an id" do
+    subject.enroll_person(person)
+    subject.get_person(person.id).should == person
+  end
+
+  describe '#create_link' do
     it 'can link two people together' do
       subject.create_link(person, person2)
       subject.get_links(person).should == [person2]

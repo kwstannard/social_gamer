@@ -1,0 +1,13 @@
+%form{ :action=>'/people/new', :method=>'post' }
+  %fieldset
+    %ol
+      %li
+        %input{ :type=>"input", :name=>:id}
+      %li
+        %input{ :type=>"input", :name=>:name_first}
+      %li
+        %input{ :type=>"input", :name=>:name_middle }
+      %li
+        %input{ :type=>"input", :name=>:name_last }
+      %li
+        %input{ :type=>"submit", :value=>"Upload" }
