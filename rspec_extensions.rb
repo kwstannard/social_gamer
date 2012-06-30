@@ -6,14 +6,6 @@ module InstanceSpecMethods
       end
     end
   end
-
-  def it_has_the_mtm_relations(*args)
-    describe "#mtm_relations" do
-      it "returns #{args}" do
-        subject.class.mtm_relations.should == args
-      end
-    end
-  end
 end
 
 RSpec.configure do |c|

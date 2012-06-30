@@ -1,0 +1,12 @@
+.container
+  .row
+    .span12
+      %form{ action: '/login', method: 'post' }
+        %fieldset
+          %ol
+            %li
+              %input.form_input{ type: "email", name: :email}
+            %li
+              %input.form_input{ type: "password", name: :password}
+            %li
+              %input.btn{ name: "submit", type: "submit", value: "Login" }

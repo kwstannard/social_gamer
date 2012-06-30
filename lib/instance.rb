@@ -1,11 +1,7 @@
+require '~/social_gamer/lib/instance_methods'
+
 class Instance
 
-  def initialize(id)
-    @id = id
-  end
-
-  def id
-    @id
-  end
+  include InstanceMethods
 
 end

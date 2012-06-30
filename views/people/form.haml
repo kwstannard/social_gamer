@@ -1,13 +1,10 @@
-%form{ :action=>'/people/new', :method=>'post' }
+%form{ action: '/people/new', method: 'post' }
   %fieldset
-    %ol
-      %li
-        %input{ :type=>"input", :name=>:id}
-      %li
-        %input{ :type=>"input", :name=>:name_first}
-      %li
-        %input{ :type=>"input", :name=>:name_middle }
-      %li
-        %input{ :type=>"input", :name=>:name_last }
-      %li
-        %input{ :type=>"submit", :value=>"Upload" }
+    %label First Name
+    %input{ type: "input", name: :name_first}
+    %label Middle Name
+    %input{ type: "input", name: :name_middle }
+    %label Last Name
+    %input{ type: "input", name: :name_last }
+    %label Submit
+    %input{ type: "submit", value: "Upload" }
