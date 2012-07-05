@@ -1,6 +1,6 @@
 load '~/social_gamer/spec_helper.rb'
 describe User, :type => :instance do
-  it_has_the_attributes(:email, :password, :password_confirmation)
+  it_has_the_attributes(:email, :password_hash)
 
   it 'encrypts a users password' do
     subject.password_salt.should be_nil

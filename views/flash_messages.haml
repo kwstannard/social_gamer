@@ -1,0 +1,4 @@
+- flash.each do |type, message|
+  %div.span6.alert.fade.in{ "data-alert" => "alert", :class => type.to_s}
+    %a.close{:href => "#"}
+    %p= message

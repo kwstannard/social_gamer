@@ -1,0 +1,23 @@
+%a.btn.dropdown-toggle{ href: '#', 'data-toggle' => 'dropdown' }
+  =session[:name] || "login"
+%div.dropdown-menu{ id: 'dropdown' }
+  -if session[:name]
+    %li
+      %a.span3{ href: "/users/profile/#{session[:user_id]}" }Profile
+    %li.divider
+    %li
+      %a.span3{href: '/logout'} Logout
+  -else
+    =haml(:'users/login_form')
+:javascript
+  $(document).ready(function(){
+    $(function() {
+      // Setup drop down menu
+      $('.dropdown-toggle').dropdown();
+      // Fix input element click problem
+      $('#dropdown').click(function(e) {
+        console.log("hi");
+        e.stopPropagation();
+      });
+    });
+  });

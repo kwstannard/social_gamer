@@ -1,18 +1,10 @@
 .navbar.navbar-fixed-top
   .navbar-inner
     .container-fluid
-      %a.btn.btn-navbar{ "data-toggle".to_sym => "collapse", "data-target".to_sym => ".nav-collapse"}
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
-      %a.brand{:href => '/'} Project name
-      .nav-collapse
-        %ul.nav
-          %li
-            %a{:href => '/'}Home
-          %li
-            %a{:href => '/about'}About
-          %li
-            %a{:href => '/register'}Register
-          %li
-            %a{:href => '/contact'}Contact
+      %a.brand{ href: '/' }=settings.title
+      %ul.nav
+        %li
+          %a{ href: '/about' }About
+        %li
+          %a{ href: '/contact' }Contact
+      %div.btn-group.pull-right= haml :'login/dropdown'

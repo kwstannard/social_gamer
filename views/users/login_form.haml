@@ -1,0 +1,7 @@
+%form{ action: '/login', method: 'post' }
+  %label.span1 Email
+  %input.span2.form_input{ type: "email", name: :email}
+  %label.span1 Password
+  %input.span2.form_input{ type: "password", name: :password}
+  %a.btn.pull-left{ href: '/register' }Register
+  %input.btn.pull-right{ name: "submit", type: "submit", value: "Login" }
