@@ -1,17 +1,14 @@
-require '/home/kelly/social_gamer/lib/handlers/instance_handler'
-require '/home/kelly/social_gamer/lib/handlers/link_handler'
-require '/home/kelly/social_gamer/lib/interfaces/session_interface'
+require 'the_blob'
+require File.expand_path('../interfaces/session_interface', __FILE__)
 
 class Application
 
-  include LinkHandler
-  include InstanceHandler
+  include TheBlob
   include SessionInterface
 
   attr_accessor :name
 
   def initialize(options = {})
-    load_instances
     @name = options[:name]
   end
 

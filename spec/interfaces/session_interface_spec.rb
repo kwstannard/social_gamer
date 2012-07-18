@@ -1,37 +1,36 @@
+require 'the_blob'
 require 'interfaces/session_interface'
-require 'handlers/instance_handler'
-require 'test_instances/user'
 
-class Subj; include SessionInterface; end
+class Subj; include SessionInterface; include TheBlob; end
 
 describe SessionInterface do
 
-  let(:subject) { Subj.new }
-  let (:email) { double }
-  let (:password) { "pass" }
-  let (:user) { User.new(email: email, password: password) }
+  let(:subj_class) { Class.new }
+  let(:subject) { subj_class.new }
 
+  let(:user) { User.new(email: double, password: "pass") }
 
   before(:each) do
-    subject.stub! :get_user_by_email do |e|
-      user if e == email
-    end
+    @dir = File.expand_path("../../../lib/test_instances", __FILE__)
+    File.stub!(:expand_path) {@dir}
+    subj_class.class_eval { include SessionInterface }
+    subj_class.class_eval { include TheBlob }
   end
 
   describe '#fetch_user' do
     it 'returns a user when given an email' do
-      raise subject.get_user_by_email.inspect
-      subject.fetch_user(email).should be(user)
+      subject.absorb user
+      subject.fetch_user(user.email).should be(user)
     end
 
     it 'raises NoUserFound if email doesnt match anything' do
-      expect{subject.fetch_user(email)}.to raise_error(NoUserFound)
+      expect{subject.fetch_user(user.email)}.to raise_error(NoUserFound)
     end
   end
   
   describe '#password_matches' do
     it 'returns true if given the correct password' do
-      subject.password_matches?(user, password).should be_true
+      subject.password_matches?(user, user.password).should be_true
     end
     it 'raises WrongPassword if password doesnt match' do
       expect{subject.password_matches?(user, "herp")}.to raise_error(WrongPassword)

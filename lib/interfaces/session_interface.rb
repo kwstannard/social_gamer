@@ -5,7 +5,9 @@ class WrongPassword < RuntimeError; end
 
 module SessionInterface
   def fetch_user(email)
-    get_user_by_email(email) || (raise NoUserFound)
+    emit_user_by_email(email)
+  rescue InstanceHandler::InstanceNotFound
+    raise NoUserFound
   end
 
   def password_matches?(user, password)

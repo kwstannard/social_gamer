@@ -1,4 +1,3 @@
-require '~/social_gamer/lib/instance.rb'
 require 'bcrypt'
 
 class User < Instance
